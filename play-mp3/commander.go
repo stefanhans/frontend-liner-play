@@ -26,7 +26,13 @@ func commandsInit() {
 	// commands["mycmd"] = "mycmd  \n\t does something\n"
 
 	//
-	commands["speak"] = "speak <text>  \n\t text to speech and speak out\n"
+	commands["record"] = "record  \n\t records 5 sec\n"
+
+	//
+	commands["speak"] = "speak <english text>  \n\t text to speech and speak out\n"
+
+	//
+	commands["translate"] = "translate <german text>  \n\t translate to English and speak\n"
 
 	// To store the keys in sorted order
 	for commandKey := range commands {
@@ -60,8 +66,16 @@ func executeCommand(commandline string) bool {
 		//	myCmd(commandFields[1:])
 		//	return true
 
+		case "record":
+			record(commandFields[1:])
+			return true
+
 		case "speak":
 			speak(commandFields[1:])
+			return true
+
+		case "translate":
+			translate(commandFields[1:])
 			return true
 
 		default:
